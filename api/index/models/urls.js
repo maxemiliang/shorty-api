@@ -6,16 +6,13 @@ const Schema = mongoose.Schema;
 const urlModel = new Schema({
 	originalUrl: {
 		type: String,
-		required: true,
-		index: {
-			unique: true
-		}
+		required: true
 	},
 	slug: {
 		type: String,
 		required: true,
 		index: {
-			required: true
+			unique: true
 		}
 	},
 	createdAt: {
