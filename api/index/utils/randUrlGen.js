@@ -2,18 +2,22 @@
 
 const Url = require('../models/urls.js');
 const mongoose = require('mongoose');
+const Boom = require('boom');
 
-function generateSlug(url) {
-	let str = Math.random().toString(36).substr(2, 5);
+function generateSlug(url, res) {
+	let str = (Math.random().toString(36) + '00000000000000000').slice(2, 7);
 	Url.findOne({
 		slug: str
 	}, (err, slug) => {
+		if (err) {
+			Boom.badRequest(err)
+		}
 		if (!slug) {
 			let obj = new Url;
 			obj.originalUrl = url;
 			obj.slug = str;
 			obj.createdAt = new Date();
-			Url.save((obj, err) => {
+			obj.save((obj, err) => {
 				if (err) {
 					throw Boom.badRequest(err)
 				}
