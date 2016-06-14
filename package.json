@@ -1,0 +1,26 @@
+{
+  "name": "shorty-api",
+  "version": "1.0.0",
+  "description": "A api for a url shortener",
+  "main": "app.js",
+  "scripts": {
+    "test": "lol no"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxemiliang/shorty-api.git"
+  },
+  "author": "Maxemiliang contact@maxemiliang.me",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maxemiliang/shorty-api/issues"
+  },
+  "homepage": "https://github.com/maxemiliang/shorty-api#readme",
+  "dependencies": {
+    "boom": "^3.2.1",
+    "glob": "^7.0.3",
+    "hapi": "^11.1.3",
+    "joi": "^8.4.1",
+    "mongoose": "^4.4.20"
+  }
+}
