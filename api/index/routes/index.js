@@ -4,6 +4,8 @@ module.exports = {
 	path: '/api',
 	method: 'GET',
 	handler: (req, res) => {
-		res('memes');
+		res({
+			status: 'API Functional'
+		});
 	}
 }

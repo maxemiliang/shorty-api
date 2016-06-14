@@ -12,8 +12,8 @@ server.connection({
 	port: process.env.PORT || 1337
 });
 
+// db connection url
 const db = 'shorty-api';
-
 const dbUrl = 'mongodb://localhost:27017/' + db;
 
 glob.sync('api/**/routes/*.js', {
