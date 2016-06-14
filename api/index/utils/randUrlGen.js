@@ -10,14 +10,14 @@ function generateSlug(url, res) {
 		slug: str
 	}, (err, slug) => {
 		if (err) {
-			Boom.badRequest(err)
+			throw Boom.badRequest(err)
 		}
 		if (!slug) {
 			let obj = new Url;
 			obj.originalUrl = url;
 			obj.slug = str;
 			obj.createdAt = new Date();
-			obj.save((obj, err) => {
+			obj.save((err, obj) => {
 				if (err) {
 					throw Boom.badRequest(err)
 				}
