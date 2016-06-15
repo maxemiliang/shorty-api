@@ -7,7 +7,7 @@ const Boom = require('boom');
 function generateSlug(url, res) {
 	let str = (Math.random().toString(36) + '00000000000000000').slice(2, 7);
 	Url.findOne({
-		slug: str
+		'slug': str
 	}, (err, slug) => {
 		if (err) {
 			throw Boom.badRequest(err)
@@ -19,9 +19,10 @@ function generateSlug(url, res) {
 			obj.createdAt = new Date();
 			obj.save((err, obj) => {
 				if (err) {
-					throw Boom.badRequest(err)
+					throw Boom.badRequest('The url already exists or an error occured');
 				}
 				res({
+					_id: obj._id,
 					status: 'generated',
 					shorty: str,
 					originalUrl: url
