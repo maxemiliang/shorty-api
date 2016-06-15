@@ -8,7 +8,8 @@ module.exports = {
 	method: 'GET',
 	config: {
 		handler: (req, res) => {
-			let short = req.query.slug
+			let short = req.params.slug
+			console.log(short);
 			Url.findOne({
 				slug: short
 			}, (err, obj) => {
@@ -17,9 +18,9 @@ module.exports = {
 				}
 				if (obj) {
 					console.log('Got this far')
-					res.redirect(obj.originalUrl);
+					res().redirect(obj.originalUrl);
 				} else {
-					console.log('RIP');
+					throw Boom.badRequest('Short url not found');
 				}
 			})
 		}
